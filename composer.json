@@ -1,0 +1,27 @@
+{
+    "name": "hawezo/javascript-bundle",
+    "description": "Useful Symfony functionnalities in your front-end.",
+    "keywords": [ "symfony", "javascript", "routing", "translation" ],
+    "type": "symfony-bundle",
+    "require": {
+        "php": "^7.0",
+        "symfony/framework-bundle": "^4.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Enzo Innocenzi",
+            "email": "enzo.inno@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Hawezo\\JavascriptBundle\\": ""
+        }
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": "true"
+        }
+    }
+}
