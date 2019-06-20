@@ -107,7 +107,7 @@ Now that your translation and routes are ready to use, you will need the `symfon
 
 ```console
 # Yarn
-$ yarn add symfony-javascript
+$ yarn add symfony-javascript 
 
 # NPM
 $ npm install symfony-javascript
@@ -140,11 +140,76 @@ router.url('route_name', {arg: 'value'});
 
 ### Using with Vue
 
-The Vue plugin is not there yet, I'm working on it.
+The Router includes a Vue plugin. 
 
-### Using the settings
+```javascript
+Vue.use(router.getVuePlugin());
+``` 
 
-TODO
+It offers the five methods and instance methods of components, as well as a `path` and `url` directives.
+
+```html
+<span v-path="{
+    name: 'foo', 
+    parameters: {'foo': 'bar'}
+}" />
+
+<span v-url="{
+    name: 'foo', 
+    parameters: {'foo': 'bar'}
+}" />
+
+<a :href="path('foo')" />
+```
+
+### Router settings reference
+
+The following options are available when passing an object to the Router constructor:
+
+```js
+const DefaultSettings = {
+
+	/**
+	 * Will display console messages if set to yes.
+	 */
+	debug: false,
+
+	/**
+     * A collection of routes to be loaded by default.
+     */
+    collection: {},
+
+    /**
+     * Forces HTTPS scheme. No effect if `forceCurrentScheme` is true.
+     */
+    forceHttps: false,
+    
+    /**
+     * Sets the URL generator scheme to the current protocol.
+     */
+    forceCurrentScheme: false,
+
+    /**
+     * Sets a fallback scheme if none is provided.
+     */
+    scheme: 'http',
+    
+    /**
+     * Sets a fallback base URL if none is provided.
+     */
+    fallbackBaseUrl: '',
+    
+    /**
+     * Sets a fallback host if none is provided.
+     */
+    fallbackHost: '',
+    
+    /**
+     * The name of the Vue directive for translating.
+     */
+    vueDirectiveName: 'trans',
+};
+```
 
 ---
 
@@ -196,19 +261,57 @@ It offers the global `v-trans` directive and the `trans` method. It takes an obj
 }" />
 ```
 
-### Using the settings
+### Translator settings reference
 
-There are multiple options that you can modify to fit your needs. You will need to instanciate the Translator by calling the constructor by yourself, and pass an object with the following options:
+```javascript
+const DefaultSettings = {
 
-| Setting | Description | Default value |
-| ------- | ----------- | ------------- |
-| fallbackLocale | A fallback locale | en |
-| defaultDomain | The default domain when you don't provide one | messages |
-| pluralSeparator | The separator of pluralization (you shouldn't touch that) | \| |
-| vueDirectiveName | Sets the vue directive name | trans |
-| catalogue | Default catalogue | |
-| debug | Outputs messages in console | |
-| onUntranslatedMessageCallback | A callback called when a translation could not be found | |
+	/**
+     * The fallback locale for untranslated messages.
+     */
+	fallbackLocale: 'en',
+
+	/**
+     * The default domain for message translations.
+     */
+	defaultDomain: 'messages',
+
+	/**
+     * A callback executed when the message does not have a translation.
+     */
+	// eslint-disable-next-line no-unused-vars
+    onUntranslatedMessageCallback: (_id, _domain, _locale) => {},
+    
+    /**
+     * Adds missing messages in Symfony's web debug toolbar. This is experimental and only available when debug is true.
+     */
+    addMissingInWebToolbar: false,
+
+	/**
+	 * Will display console messages if set to yes.
+	 */
+	debug: false,
+
+	/**
+     * A catalogue to be loaded.
+     */
+	catalogue: {},
+
+	/**
+     * The character separating multiple translations for pluralization.
+     */
+    pluralSeparator: '|',
+    
+    /**
+     * The name of the Vue directive for translating.
+     */
+    vueDirectiveName: 'trans',
+
+	sPluralRegex: new RegExp(/^\w+: +(.+)$/),
+	cPluralRegex: new RegExp(/^\s*((\{\s*(-?\d+[\s*,\s*\-?\d+]*)\s*\})|([[\]])\s*(-Inf|-?\d+)\s*,\s*(\+?Inf|-?\d+)\s*([[\]]))\s?(.+?)$/),
+	iPluralRegex: new RegExp(/^\s*(\{\s*(\?\d+[\s*,\s*\-?\d+]*)\s*\})|([[\]])\s*(-Inf|-?\d+)\s*,\s*(\+?Inf|-?\d+)\s*([[\]])/),
+};
+```
 
 #### Example
 
@@ -217,41 +320,13 @@ There are multiple options that you can modify to fit your needs. You will need 
 
 import { Translator } from 'symfony-javascript';
 import catalogue from './messages.json';
-import wait from 'async-wait-until';
 
 const debug = process.env.NODE_ENV !== 'production';
-var missing = [];
 
 const translator = new Translator({
-    catalogue: catalogue,
     debug,
-    async onUntranslatedMessageCallback(id) {
-        if (debug) {
-            wait(() => document.querySelector('.sf-toolbar-block-translation'), 3000)
-            .then(() => {
-                missing.push(id);
-
-                const translationBlock = document.querySelector('.sf-toolbar-block-translation');
-
-                if (!translationBlock) {
-                    return;
-                }
-
-                translationBlock.classList.add('sf-toolbar-status-red');
-
-                const valueContainer = translationBlock.querySelector('.sf-toolbar-value');
-                const toolbarInfo = translationBlock.querySelector('.sf-toolbar-info');
-                let value = Number(valueContainer.innerHTML) + missing.length;
-
-                valueContainer.innerHTML = value;
-
-                toolbarInfo.innerHTML += `<div class="sf-toolbar-info-piece">
-                    <b><abbr title="You can't see them in the profiler yet: \n${missing.join('\n')}">Javascript missing</abbr></b>
-                    <span class="sf-toolbar-status sf-toolbar-status-red">${missing.length}</span>
-                </div>`;
-            });
-        }
-    }
+    catalogue: require('./symfony/messages.json'),
+    addMissingInWebToolbar: true
 });
 
 export default translator.getVuePlugin();
