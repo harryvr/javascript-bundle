@@ -7,6 +7,11 @@
         <service id="javascript" class="Hawezo\JavascriptBundle\JavascriptBundle" />
         <service id="Hawezo\JavascriptBundle\JavascriptBundle" alias="javascript" />
 
+        <!-- Command -->
+        <service id="Hawezo\JavascriptBundle\Command\ExtractJavascriptCommand">
+            <tag name="console.command" command="javascript:extract" />
+        </service>
+
         <!-- Translations -->
         <service id="Hawezo\JavascriptBundle\Command\ExtractTranslationsCommand">
             <tag name="console.command" command="javascript:extract-translations" />
