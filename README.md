@@ -169,12 +169,12 @@ The following options are available when passing an object to the Router constru
 ```js
 const DefaultSettings = {
 
-	/**
-	 * Will display console messages if set to yes.
-	 */
-	debug: false,
+    /**
+     * Will display console messages if set to yes.
+     */
+     debug: false,
 
-	/**
+    /**
      * A collection of routes to be loaded by default.
      */
     collection: {},
@@ -266,50 +266,50 @@ It offers the global `v-trans` directive and the `trans` method. It takes an obj
 ```javascript
 const DefaultSettings = {
 
-	/**
-     * The fallback locale for untranslated messages.
-     */
-	fallbackLocale: 'en',
+     /**
+      * The fallback locale for untranslated messages.
+      */
+     fallbackLocale: 'en',
 
-	/**
-     * The default domain for message translations.
-     */
-	defaultDomain: 'messages',
+     /**
+      * The default domain for message translations.
+      */
+     defaultDomain: 'messages',
 
-	/**
-     * A callback executed when the message does not have a translation.
-     */
-	// eslint-disable-next-line no-unused-vars
-    onUntranslatedMessageCallback: (_id, _domain, _locale) => {},
+     /**
+      * A callback executed when the message does not have a translation.
+      */
+     // eslint-disable-next-line no-unused-vars
+     onUntranslatedMessageCallback: (_id, _domain, _locale) => {},
     
-    /**
-     * Adds missing messages in Symfony's web debug toolbar. This is experimental and only available when debug is true.
-     */
-    addMissingInWebToolbar: false,
+     /**
+      * Adds missing messages in Symfony's web debug toolbar. This is experimental and only available when debug is true.
+      */
+     addMissingInWebToolbar: false,
 
-	/**
-	 * Will display console messages if set to yes.
-	 */
-	debug: false,
+     /**
+      * Will display console messages if set to yes.
+      */
+     debug: false,
 
-	/**
-     * A catalogue to be loaded.
-     */
-	catalogue: {},
+     /**
+      * A catalogue to be loaded.
+      */
+     catalogue: {},
 
-	/**
-     * The character separating multiple translations for pluralization.
-     */
-    pluralSeparator: '|',
+     /**
+      * The character separating multiple translations for pluralization.
+      */
+     pluralSeparator: '|',
     
-    /**
-     * The name of the Vue directive for translating.
-     */
-    vueDirectiveName: 'trans',
+     /**
+      * The name of the Vue directive for translating.
+      */
+     vueDirectiveName: 'trans',
 
-	sPluralRegex: new RegExp(/^\w+: +(.+)$/),
-	cPluralRegex: new RegExp(/^\s*((\{\s*(-?\d+[\s*,\s*\-?\d+]*)\s*\})|([[\]])\s*(-Inf|-?\d+)\s*,\s*(\+?Inf|-?\d+)\s*([[\]]))\s?(.+?)$/),
-	iPluralRegex: new RegExp(/^\s*(\{\s*(\?\d+[\s*,\s*\-?\d+]*)\s*\})|([[\]])\s*(-Inf|-?\d+)\s*,\s*(\+?Inf|-?\d+)\s*([[\]])/),
+     sPluralRegex: new RegExp(/^\w+: +(.+)$/),
+     cPluralRegex: new RegExp(/^\s*((\{\s*(-?\d+[\s*,\s*\-?\d+]*)\s*\})|([[\]])\s*(-Inf|-?\d+)\s*,\s*(\+?Inf|-?\d+)\s*([[\]]))\s?(.+?)$/),
+     iPluralRegex: new RegExp(/^\s*(\{\s*(\?\d+[\s*,\s*\-?\d+]*)\s*\})|([[\]])\s*(-Inf|-?\d+)\s*,\s*(\+?Inf|-?\d+)\s*([[\]])/),
 };
 ```
 
@@ -336,5 +336,5 @@ export { translator };
 TODO
 ====
 
-- [ ] Tests - I know. I should be developping tests at the same time as I was developping the bundle. I was in a hurry.
+- [ ] Tests - ffs, who tf do not test their work in 2019?!
 - [ ] Upload the Symfony recipe
