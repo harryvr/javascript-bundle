@@ -3,7 +3,7 @@
 /*
  * This file is part of the JavascriptBundle package.
  *
- * © Enzo Innocenzi <enzo.inno@gmail.com>
+ * © Enzo Innocenzi <enzo@innocenzi.dev>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,15 +20,15 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * @author Enzo Innocenzi <enzo.inno@gmail.com>
+ * @author Enzo Innocenzi <enzo@innocenzi.dev>
  */
 class ExtractRoutesCommand extends Command
 {
-    const ARG_PRETTIFY = 'pretty';
-    const ARG_FORMAT = 'format';
+    const ARG_PRETTIFY         = 'pretty';
+    const ARG_FORMAT           = 'format';
     const ARG_EXTRACT_OVERRIDE = 'path';
 
-    const FORMAT_JS = 'js';
+    const FORMAT_JS   = 'js';
     const FORMAT_JSON = 'json';
 
     protected static $defaultName = 'javascript:extract-routes';
@@ -59,10 +59,10 @@ class ExtractRoutesCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $container = $this->getApplication()->getKernel()->getContainer();
-        $prettify = $input->getOption(self::ARG_PRETTIFY);
-        $format = $input->getArgument(self::ARG_FORMAT);
-        $root = $container->getParameter('kernel.project_dir');
+        $container   = $this->getApplication()->getKernel()->getContainer();
+        $prettify    = $input->getOption(self::ARG_PRETTIFY);
+        $format      = $input->getArgument(self::ARG_FORMAT);
+        $root        = $container->getParameter('kernel.project_dir');
         $extractPath = $input->getArgument(self::ARG_EXTRACT_OVERRIDE)
             ?? $container->getParameter('javascript.routing.extract_path')
             ?? 'public/build/routes';

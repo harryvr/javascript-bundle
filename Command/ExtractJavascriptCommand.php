@@ -3,7 +3,7 @@
 /*
  * This file is part of the JavascriptBundle package.
  *
- * © Enzo Innocenzi <enzo.inno@gmail.com>
+ * © Enzo Innocenzi <enzo@innocenzi.dev>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,19 +11,19 @@
 
 namespace Hawezo\JavascriptBundle\Command;
 
-use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @author Enzo Innocenzi <enzo.inno@gmail.com>
+ * @author Enzo Innocenzi <enzo@innocenzi.dev>
  */
 class ExtractJavascriptCommand extends Command
 {
-    const ARG_PRETTIFY         = 'pretty';
-    const ARG_FORMAT           = 'format';
+    const ARG_PRETTIFY = 'pretty';
+    const ARG_FORMAT   = 'format';
 
     const FORMAT_JS   = 'js';
     const FORMAT_JSON = 'json';

@@ -3,7 +3,7 @@
 /*
  * This file is part of the JavascriptBundle package.
  *
- * © Enzo Innocenzi <enzo.inno@gmail.com>
+ * © Enzo Innocenzi <enzo@innocenzi.dev>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,26 +11,25 @@
 
 namespace Hawezo\JavascriptBundle\Command;
 
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Hawezo\JavascriptBundle\Translation\Extractor\ExtractorInterface;
-use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * @author Enzo Innocenzi <enzo.inno@gmail.com>
+ * @author Enzo Innocenzi <enzo@innocenzi.dev>
  */
 class ExtractTranslationsCommand extends Command
 {
-    const ARG_PRETTIFY =        'pretty';
-    const ARG_FORMAT =          'format';
+    const ARG_PRETTIFY         = 'pretty';
+    const ARG_FORMAT           = 'format';
     const ARG_EXTRACT_OVERRIDE = 'path';
 
-    const FORMAT_JS =       'js';
-    const FORMAT_JSON =     'json';
+    const FORMAT_JS   = 'js';
+    const FORMAT_JSON = 'json';
 
     protected static $defaultName = 'javascript:extract-translations';
 
@@ -59,14 +58,14 @@ class ExtractTranslationsCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
-        
-        $container = $this->getApplication()->getKernel()->getContainer();
-        $prettify = $input->getOption(self::ARG_PRETTIFY);
-        $format = $input->getArgument(self::ARG_FORMAT);
-        $root = $container->getParameter('kernel.project_dir');
-        $locales = $container->getParameter('javascript.translation.locales');
-        $domains = $container->getParameter('javascript.translation.domains');
-        $extractPath = $input->getArgument(self::ARG_EXTRACT_OVERRIDE) 
+
+        $container   = $this->getApplication()->getKernel()->getContainer();
+        $prettify    = $input->getOption(self::ARG_PRETTIFY);
+        $format      = $input->getArgument(self::ARG_FORMAT);
+        $root        = $container->getParameter('kernel.project_dir');
+        $locales     = $container->getParameter('javascript.translation.locales');
+        $domains     = $container->getParameter('javascript.translation.domains');
+        $extractPath = $input->getArgument(self::ARG_EXTRACT_OVERRIDE)
             ?? $container->getParameter('javascript.translation.extract_path')
             ?? 'public/build/messages';
         $extractPath = $this->replaceExtension($extractPath, $format);
@@ -75,17 +74,20 @@ class ExtractTranslationsCommand extends Command
         switch ($format) {
             case self::FORMAT_JS:
                 $content = $this->getJavascript($translations, $prettify);
+
                 break;
 
             case self::FORMAT_JSON:
                 $content = $this->getJson($translations, $prettify);
+
                 break;
 
             default:
                 $io->error(sprintf('Invalid format %s.', $format));
+
                 return;
         }
-        
+
         $filesystem = new Filesystem();
         $filesystem->dumpFile(
             $root . DIRECTORY_SEPARATOR . $extractPath,

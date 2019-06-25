@@ -3,7 +3,7 @@
 /*
  * This file is part of the JavascriptBundle package.
  *
- * © Enzo Innocenzi <enzo.inno@gmail.com>
+ * © Enzo Innocenzi <enzo@innocenzi.dev>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,7 +16,7 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Http\Logout\LogoutUrlGenerator;
 
 /**
- * @author Enzo Innocenzi <enzo.inno@gmail.com>
+ * @author Enzo Innocenzi <enzo@innocenzi.dev>
  */
 class RouteExtractor implements ExtractorInterface
 {
@@ -57,11 +57,11 @@ class RouteExtractor implements ExtractorInterface
 
     public function __construct(RouterInterface $router, LogoutUrlGenerator $logoutGenerator, array $routes = [], bool $whitelist = false)
     {
-        $this->router = $router;
-        $this->logoutGenerator = $logoutGenerator;
-        $this->routes = $routes;
+        $this->router                = $router;
+        $this->logoutGenerator       = $logoutGenerator;
+        $this->routes                = $routes;
         $this->routeArrayIsWhitelist = $whitelist;
-        $this->context = $router->getContext();
+        $this->context               = $router->getContext();
     }
 
     /**
@@ -70,7 +70,7 @@ class RouteExtractor implements ExtractorInterface
     public function extract(): array
     {
         $collection = $this->router->getRouteCollection();
-        $routes = [];
+        $routes     = [];
 
         foreach ($collection->all() as $name => $route) {
             if (in_array($name, array_keys($routes))) {
@@ -109,7 +109,7 @@ class RouteExtractor implements ExtractorInterface
 
     /**
      * Gets the HTTP host of this router context.
-     * 
+     *
      * @return string
      */
     public function getHost()
@@ -120,17 +120,17 @@ class RouteExtractor implements ExtractorInterface
     protected function serialize($routes)
     {
         try {
-            $logoutUrl = $this->logoutGenerator->getLogoutUrl();
+            $logoutUrl  = $this->logoutGenerator->getLogoutUrl();
             $logoutPath = $this->logoutGenerator->getLogoutPath();
         } catch (\Throwable $th) {
         }
 
         return [
-            'routes'   => $routes,
-            'scheme'   => $this->getScheme(),
-            'host' => $this->getHost(),
-            'base_url' => $this->getBaseUrl(),
-            'logout_url' => $logoutUrl ?? null,
+            'routes'      => $routes,
+            'scheme'      => $this->getScheme(),
+            'host'        => $this->getHost(),
+            'base_url'    => $this->getBaseUrl(),
+            'logout_url'  => $logoutUrl ?? null,
             'logout_path' => $logoutPath ?? null,
         ];
     }
@@ -144,8 +144,8 @@ class RouteExtractor implements ExtractorInterface
     {
         $serialization = $route->__serialize();
 
-        $compiled = $route->compile();
-        $serialization['tokens'] = $compiled->getTokens();
+        $compiled                     = $route->compile();
+        $serialization['tokens']      = $compiled->getTokens();
         $serialization['host_tokens'] = method_exists($compiled, 'getHostTokens') ? $compiled->getHostTokens() : array();
 
         return array_filter($serialization, function ($key) {
