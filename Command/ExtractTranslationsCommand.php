@@ -88,7 +88,7 @@ class ExtractTranslationsCommand extends Command
         
         $filesystem = new Filesystem();
         $filesystem->dumpFile(
-            $root . '\\' . $extractPath,
+            $root . DIRECTORY_SEPARATOR . $extractPath,
             $content
         );
 
