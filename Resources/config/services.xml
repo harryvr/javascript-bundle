@@ -4,35 +4,35 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services
         http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="javascript" class="Hawezo\JavascriptBundle\JavascriptBundle" />
-        <service id="Hawezo\JavascriptBundle\JavascriptBundle" alias="javascript" />
+        <service id="javascript" class="SymfonyJavascript\JavascriptBundle\JavascriptBundle" />
+        <service id="SymfonyJavascript\JavascriptBundle\JavascriptBundle" alias="javascript" />
 
         <!-- Command -->
-        <service id="Hawezo\JavascriptBundle\Command\ExtractJavascriptCommand">
+        <service id="SymfonyJavascript\JavascriptBundle\Command\ExtractJavascriptCommand">
             <tag name="console.command" command="javascript:extract" />
         </service>
 
         <!-- Translations -->
-        <service id="Hawezo\JavascriptBundle\Command\ExtractTranslationsCommand">
+        <service id="SymfonyJavascript\JavascriptBundle\Command\ExtractTranslationsCommand">
             <tag name="console.command" command="javascript:extract-translations" />
             <argument type="service" id="javascript.translation.extractor" />
         </service>
 
-        <service id="javascript.translation.extractor" class="Hawezo\JavascriptBundle\Translation\Extractor\TranslationExtractor" public="true">
+        <service id="javascript.translation.extractor" class="SymfonyJavascript\JavascriptBundle\Translation\Extractor\TranslationExtractor" public="true">
             <argument type="service" id="translator" />
             <argument></argument>
             <argument></argument>
         </service>
         
-        <service id="Hawezo\JavascriptBundle\Translation\Extractor\TranslationExtractor" alias="javascript.translation.extractor" />
+        <service id="SymfonyJavascript\JavascriptBundle\Translation\Extractor\TranslationExtractor" alias="javascript.translation.extractor" />
 
         <!-- Routing -->
-        <service id="Hawezo\JavascriptBundle\Command\ExtractRoutesCommand">
+        <service id="SymfonyJavascript\JavascriptBundle\Command\ExtractRoutesCommand">
             <tag name="console.command" command="javascript:extract-routes" />
             <argument type="service" id="javascript.routing.extractor"/>
         </service>
 
-        <service id="javascript.routing.extractor" class="Hawezo\JavascriptBundle\Routing\Extractor\RouteExtractor" public="true">
+        <service id="javascript.routing.extractor" class="SymfonyJavascript\JavascriptBundle\Routing\Extractor\RouteExtractor" public="true">
             <argument type="service" id="router" />
             <!-- <argument /> -->
             <argument type="service" id="security.logout_url_generator" /> 
@@ -40,6 +40,6 @@
             <argument />
         </service>
         
-        <service id="Hawezo\JavascriptBundle\Routing\Extractor\RouteExtractor" alias="javascript.routing.extractor" />
+        <service id="SymfonyJavascript\JavascriptBundle\Routing\Extractor\RouteExtractor" alias="javascript.routing.extractor" />
     </services>
 </container>

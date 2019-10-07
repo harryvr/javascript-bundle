@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
 */
 
-namespace Hawezo\JavascriptBundle\DependencyInjection;
+namespace SymfonyJavascript\JavascriptBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

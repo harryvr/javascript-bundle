@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
 */
 
-namespace Hawezo\JavascriptBundle\Routing\Extractor;
+namespace SymfonyJavascript\JavascriptBundle\Routing\Extractor;
 
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouterInterface;

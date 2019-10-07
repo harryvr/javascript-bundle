@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
 */
 
-namespace Hawezo\JavascriptBundle\Command;
+namespace SymfonyJavascript\JavascriptBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;

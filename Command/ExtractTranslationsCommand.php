@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
 */
 
-namespace Hawezo\JavascriptBundle\Command;
+namespace SymfonyJavascript\JavascriptBundle\Command;
 
-use Hawezo\JavascriptBundle\Translation\Extractor\ExtractorInterface;
+use SymfonyJavascript\JavascriptBundle\Translation\Extractor\ExtractorInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;

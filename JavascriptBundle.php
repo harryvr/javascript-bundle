@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
 */
 
-namespace Hawezo\JavascriptBundle;
+namespace SymfonyJavascript\JavascriptBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

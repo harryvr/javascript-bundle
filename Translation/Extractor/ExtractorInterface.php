@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
 */
 
-namespace Hawezo\JavascriptBundle\Translation\Extractor;
+namespace SymfonyJavascript\JavascriptBundle\Translation\Extractor;
 
 /**
  * @author Enzo Innocenzi <enzo@innocenzi.dev>
