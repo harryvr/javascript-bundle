@@ -31,7 +31,7 @@ class ExtractRoutesCommand extends Command
     const FORMAT_JS   = 'js';
     const FORMAT_JSON = 'json';
 
-    protected static $defaultName = 'javascript:extract-routes';
+    protected static $defaultName = 'javascript:extract:routes';
 
     /**
      * @var ExtractorInterface

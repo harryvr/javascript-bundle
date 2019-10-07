@@ -9,12 +9,12 @@
 
         <!-- Command -->
         <service id="SymfonyJavascript\JavascriptBundle\Command\ExtractJavascriptCommand">
-            <tag name="console.command" command="javascript:extract" />
+            <tag name="console.command" command="javascript:extract:all" />
         </service>
 
         <!-- Translations -->
         <service id="SymfonyJavascript\JavascriptBundle\Command\ExtractTranslationsCommand">
-            <tag name="console.command" command="javascript:extract-translations" />
+            <tag name="console.command" command="javascript:extract:translations" />
             <argument type="service" id="javascript.translation.extractor" />
         </service>
 
@@ -28,7 +28,7 @@
 
         <!-- Routing -->
         <service id="SymfonyJavascript\JavascriptBundle\Command\ExtractRoutesCommand">
-            <tag name="console.command" command="javascript:extract-routes" />
+            <tag name="console.command" command="javascript:extract:routes" />
             <argument type="service" id="javascript.routing.extractor"/>
         </service>
 

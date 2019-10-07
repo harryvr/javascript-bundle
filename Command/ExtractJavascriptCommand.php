@@ -28,7 +28,7 @@ class ExtractJavascriptCommand extends Command
     const FORMAT_JS   = 'js';
     const FORMAT_JSON = 'json';
 
-    protected static $defaultName = 'javascript:extract';
+    protected static $defaultName = 'javascript:extract:all';
 
     protected function configure()
     {
@@ -46,8 +46,8 @@ class ExtractJavascriptCommand extends Command
             '--pretty' => $input->getOption(self::ARG_PRETTIFY),
         ];
 
-        $this->command($output, 'javascript:extract-routes', $arguments);
-        $this->command($output, 'javascript:extract-translations', $arguments);
+        $this->command($output, 'javascript:extract:routes', $arguments);
+        $this->command($output, 'javascript:extract:translations', $arguments);
     }
 
     protected function command(OutputInterface $output, string $commandName, array $args = [])

@@ -31,7 +31,7 @@ class ExtractTranslationsCommand extends Command
     const FORMAT_JS   = 'js';
     const FORMAT_JSON = 'json';
 
-    protected static $defaultName = 'javascript:extract-translations';
+    protected static $defaultName = 'javascript:extract:translations';
 
     /**
      * @var ExtractorInterface
