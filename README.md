@@ -1,21 +1,15 @@
 # Javascript Bundle
 
 <div align="center">
+<b>Symfony bundle for front-end translation and routing</b>
 
-## Bundle
-![Packagist Version](https://img.shields.io/packagist/v/hawezo/javascript-bundle.svg?style=flat-square)
-![Packagist](https://img.shields.io/packagist/dm/hawezo/javascript-bundle.svg?style=flat-square)
-
-## Router
+![Packagist Version](https://img.shields.io/packagist/v/symfony-javascript/javascript-bundle.svg?style=flat-square)
+![Packagist](https://img.shields.io/packagist/dm/symfony-javascript/javascript-bundle.svg?style=flat-square)
 ![npm](https://img.shields.io/npm/v/@symfony-javascript/router.svg?style=flat-square)
 ![npm](https://img.shields.io/npm/dw/@symfony-javascript/router.svg?style=flat-square) 
-
-## Translator
 ![npm](https://img.shields.io/npm/v/@symfony-javascript/translator.svg?style=flat-square)
 ![npm](https://img.shields.io/npm/dw/@symfony-javascript/translator.svg?style=flat-square) 
 </div>
-
-**Symfony bundle for front-end translation and routing**
 
 Installation
 ============
