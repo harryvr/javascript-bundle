@@ -1,5 +1,5 @@
 {
-    "name": "hawezo/javascript-bundle",
+    "name": "symfony-javascript/javascript-bundle",
     "description": "Useful Symfony functionnalities in your front-end.",
     "keywords": [ "symfony", "javascript", "routing", "translation" ],
     "type": "symfony-bundle",
