@@ -5,7 +5,7 @@
     "type": "symfony-bundle",
     "require": {
         "php": "^7.0",
-        "symfony/framework-bundle": "^4.3"
+        "symfony/framework-bundle": "^5.1"
     },
     "license": "MIT",
     "authors": [
