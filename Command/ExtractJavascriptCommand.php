@@ -46,8 +46,14 @@ class ExtractJavascriptCommand extends Command
             '--pretty' => $input->getOption(self::ARG_PRETTIFY),
         ];
 
-        $this->command($output, 'javascript:extract:routes', $arguments);
-        $this->command($output, 'javascript:extract:translations', $arguments);
+        $resultRoutes = $this->command($output, 'javascript:extract:routes', $arguments);
+        $resultTranslations = $this->command($output, 'javascript:extract:translations', $arguments);
+
+        if ($resultRoutes === Command::SUCCESS && $resultTranslations === Command::SUCCESS) {
+            return Command::SUCCESS;
+        }
+
+        return Command::FAILURE;
     }
 
     protected function command(OutputInterface $output, string $commandName, array $args = [])

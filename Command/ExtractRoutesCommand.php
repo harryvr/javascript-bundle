@@ -83,7 +83,7 @@ class ExtractRoutesCommand extends Command
             default:
                 $io->error(sprintf('Invalid format %s.', $format));
 
-                return;
+                return Command::FAILURE;
         }
 
         $filesystem = new Filesystem();
@@ -93,6 +93,8 @@ class ExtractRoutesCommand extends Command
         );
 
         $io->success(sprintf('Route file have been written to %s.', $extractPath));
+
+        return Command::SUCCESS;
     }
 
     protected function replaceExtension(string $path, string $format)

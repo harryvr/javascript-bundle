@@ -85,7 +85,7 @@ class ExtractTranslationsCommand extends Command
             default:
                 $io->error(sprintf('Invalid format %s.', $format));
 
-                return;
+                return Command::FAILURE;
         }
 
         $filesystem = new Filesystem();
@@ -95,6 +95,8 @@ class ExtractTranslationsCommand extends Command
         );
 
         $io->success(sprintf('Translations messages have been written to %s.', $extractPath));
+
+        return Command::SUCCESS;
     }
 
     protected function replaceExtension(string $path, string $format)

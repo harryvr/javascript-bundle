@@ -11,7 +11,7 @@
 
 namespace SymfonyJavascript\JavascriptBundle\Translation\Extractor;
 
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\Translation\DataCollectorTranslator;
 
 /**
  * @author Enzo Innocenzi <enzo@innocenzi.dev>
@@ -22,7 +22,7 @@ class TranslationExtractor implements ExtractorInterface
     protected $locales;
     protected $domains;
 
-    public function __construct(TranslatorInterface $translator, $locales = null, $domains = null)
+    public function __construct(DataCollectorTranslator $translator, $locales = null, $domains = null)
     {
         $this->translator = $translator;
         $this->locales    = $locales;
