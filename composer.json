@@ -5,7 +5,8 @@
     "type": "symfony-bundle",
     "require": {
         "php": "^7.0",
-        "symfony/framework-bundle": "^5.1"
+        "symfony/framework-bundle": "^5.1",
+        "willdurand/js-translation-bundle": "^3.0"
     },
     "license": "MIT",
     "authors": [
